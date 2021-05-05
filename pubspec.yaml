@@ -32,6 +32,7 @@ dependencies:
   video_player: ^2.1.1
   camera: ^0.8.1
   draggable_widget: ^1.1.1
+  chewie: ^1.0.0
 
 dev_dependencies:
   flutter_test:
