@@ -1,7 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ivypod/src/screens/homeScreen.dart';
 
 class MyApp extends StatelessWidget {
+  CameraDescription camera;
+  MyApp(this.camera);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: HomeScreen(
+        camera: camera,
+      ),
     );
   }
 }
