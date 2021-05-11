@@ -31,9 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> initializePlayer() async {
     _controller = VideoPlayerController.network(
-      // 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
-      'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    );
+        // 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+        // 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
+        // 'https//flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+        );
     await Future.wait(
         [_initializeVideoPlayerFuture = _controller.initialize()]);
     // _controller.setLooping(true);
@@ -161,7 +163,37 @@ class _HomeScreenState extends State<HomeScreen> {
                                 _controller.play();
                               }
                             });
-                          }))
+                          })),
+
+                  Positioned(
+                      bottom: 20,
+                      right: 10,
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.skip_next,
+                            color: Colors.blue,
+                            size: 40,
+                          ),
+                          onPressed: () {
+                            _chewieController.seekTo(
+                                _controller.value.position +
+                                    Duration(seconds: 10));
+                          })),
+
+                  Positioned(
+                      bottom: 20,
+                      right: 60,
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.skip_previous,
+                            color: Colors.blue,
+                            size: 40,
+                          ),
+                          onPressed: () {
+                            _chewieController.seekTo(
+                                _controller.value.position -
+                                    Duration(seconds: 10));
+                          })),
                 ],
               );
             } else {
